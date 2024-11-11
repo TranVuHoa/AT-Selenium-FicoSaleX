@@ -10,14 +10,16 @@ import org.testng.annotations.BeforeMethod;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.BasePage;
 import steps.Steps;
-import utils.ExcelUtils;
 
 public class BaseTest {
 
 	public WebDriver driver;
-	public String baseURL = "https://xxx";
 	protected Steps steps;
 	protected BasePage basePage;
+
+	private String baseURL = "";
+	private String username = "";
+	private String password = "";
 
 	@BeforeMethod()
 	public void setup() throws Exception {
@@ -30,15 +32,9 @@ public class BaseTest {
 		steps = new Steps(driver);
 		basePage = new BasePage(driver);
 
-		String excelPath = "./src/test/resources/DataInput/Data.xlsx";
-		String sheetName = "Login";
-		ExcelUtils excel = new ExcelUtils(excelPath, sheetName);
-
 		basePage.openURL(baseURL);
 
-		String username = excel.getCellData(0, 0) + "";
-		String password = excel.getCellData(0, 1) + "";
-		steps.loginSteps.givenIAmOnLoginPage().whenILogin(username, password).thenIShouldSeeReportPage();
+		steps.loginSteps.givenIAmOnLoginPage().whenILogin(username, password).thenIShouldSeeDashboardPage();
 	}
 
 	@AfterMethod()

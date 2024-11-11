@@ -1,6 +1,7 @@
 package pages;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -56,6 +57,16 @@ public class BasePage {
 	protected void sendKeyElementByAction(By locator, String text) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		actions.sendKeys(driver.findElement(locator), text).perform();
+	}
+
+	protected void switchNewWindow() {
+		String MainWindow = driver.getWindowHandle();
+		Set<String> windows = driver.getWindowHandles();
+		for (String window : windows) {
+			if (!MainWindow.equals(window)) {
+				driver.switchTo().window(window);
+			}
+		}
 	}
 
 	protected void sleep(int time) {

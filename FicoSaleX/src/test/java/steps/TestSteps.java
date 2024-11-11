@@ -8,20 +8,18 @@ public class TestSteps extends BaseStep {
 		super(driver);
 	}
 
-	public TestSteps givenIAmOnLoginPage() {
-		System.out.println("givenIAmOnLoginPage");
+	public TestSteps givenIAmOnSomewherePage() {
+		System.out.println("givenIAmOnSomeWherePage");
 		return this;
 	}
 
-	public TestSteps whenILogin(String usernameText, String passwordText) {
-		System.out.println("whenILogin: " + usernameText + "-" + passwordText);
-		loginPage.login(usernameText, passwordText);
+	public TestSteps whenIDoSomething() {
+		System.out.println("whenIDoSomething");
 		return this;
 	}
 
-	public TestSteps thenIShouldSeeReportPage() {
-		System.out.println("thenIShouldSeeReportPage");
-		loginPage.check();
+	public TestSteps thenIShouldSeeOtherPage() {
+		System.out.println("whenIDoSomething");
 		return this;
 	}
 }

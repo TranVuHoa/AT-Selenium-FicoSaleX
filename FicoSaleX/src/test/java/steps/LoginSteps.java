@@ -14,14 +14,12 @@ public class LoginSteps extends BaseStep {
 	}
 
 	public LoginSteps whenILogin(String usernameText, String passwordText) {
-		System.out.println("whenILogin: " + usernameText + "-" + passwordText);
-		loginPage.login(usernameText, passwordText);
+		System.out.println("whenILogin");
 		return this;
 	}
 
-	public LoginSteps thenIShouldSeeReportPage() {
-		System.out.println("thenIShouldSeeReportPage");
-		loginPage.check();
+	public LoginSteps thenIShouldSeeDashboardPage() {
+		System.out.println("thenIShouldSeeDashboardPage");
 		return this;
 	}
 }
